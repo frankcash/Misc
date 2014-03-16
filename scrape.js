@@ -14,7 +14,7 @@ request('https://news.ycombinator.com', function(error, response, html){
 			var username = $(subtext).eq(1).text();
 			var comments = $(subtext).eq(2).text();
 
-			var metadata = {
+			var metadata = { // creates a new object
 				rank: parseInt(rank),
 				title:title,
 				url:url,
@@ -27,4 +27,4 @@ request('https://news.ycombinator.com', function(error, response, html){
 
 		}
 		
-		});
+	});
