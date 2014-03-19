@@ -1,21 +1,23 @@
+// hackerNewsScrapeServer.js
 // sets up a http server
 // and displays the info scraped from hacker news
 // to make it work type "node testScrapeServer.js"
 // go to http://localhost:8080/
-//requires request, cheerio, express
+// requires request, cheerio, express, mongoose, jade
 
 
 var request = require('request');
 var cheerio = require('cheerio');
 var express = require('express');
+var jade = require('jade');
 
 var app = express(); // creates server
 
 var metadataArray = [ ];
 
-request('https://news.ycombinator.com', function(error, response, html){
+request('https://news.ycombinator.com', function(error, response, page){
 		if(!error && response.statusCode == 200){
-			var $ = cheerio.load(html); // puts the html in the parser
+			var $ = cheerio.load(page); // puts the html in the parser
 			$('span.comhead').each(function(i, element){
 			var a=$(this).prev(); // selects previous data
 			var rank=a.parent().parent().text(); // gets rank by parsing text two elements higher
