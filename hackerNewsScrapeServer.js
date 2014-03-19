@@ -4,17 +4,18 @@
 // go to http://localhost:8080/
 //requires request, cheerio, express
 
+
 var request = require('request');
 var cheerio = require('cheerio');
 var express = require('express');
 
-var app = express(); /// creates server
+var app = express(); // creates server
 
 var metadataArray = [ ];
 
 request('https://news.ycombinator.com', function(error, response, html){
 		if(!error && response.statusCode == 200){
-			var $ = cheerio.load(html);
+			var $ = cheerio.load(html); // puts the html in the parser
 			$('span.comhead').each(function(i, element){
 			var a=$(this).prev(); // selects previous data
 			var rank=a.parent().parent().text(); // gets rank by parsing text two elements higher
@@ -42,7 +43,8 @@ request('https://news.ycombinator.com', function(error, response, html){
 });
 
 app.get('/', function(req, res){ 
-  res.send(JSON.stringify(metadataArray)); //sends this to the server
+  res.send(JSON.stringify(metadataArray, null, 4)); // sends this to the server
 });
 
-app.listen(8080);
+
+app.listen(8080); // listens to port 8080
