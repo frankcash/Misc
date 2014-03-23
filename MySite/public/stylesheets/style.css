@@ -122,16 +122,16 @@ header {
   border-bottom: 1px solid #df1806;
   text-shadow: 0px -1px 0px #df1806;
 }
-.container {
+#container {
   width: 500px;
   margin: 50px auto;
   overflow: hidden;
 }
-.main-content {
+#main-content {
   float: left;
   width: 300px;
 }
-.main-content p {
+#main-content p {
   margin-bottom: 20px;
 }
 .sidebar {
