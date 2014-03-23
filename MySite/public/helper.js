@@ -4,8 +4,8 @@ $( document ).ready(function() {
 // make a new function for this
 
 $.getJSON('/scrape', function(data){
-  console.log(data[1].title);
-  for(var i = 0; i<data.length;i++){
-    $("<p>" + data[i].title + "</p>").appendTo("#helper")
+  console.log(data);
+  for(var i = 0; i<30;i++){
+    $("<p>" + data[i].rank + ". " + "<a href=" + data[i].url + ">" + data[i].title + "</a></p>").appendTo("#helper")
   }
 });
