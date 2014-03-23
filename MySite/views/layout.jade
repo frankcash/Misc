@@ -1,13 +1,17 @@
 doctype html
 html
   head
-    title #{title} - Testing Page
+    title #{title} - My Site
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+    script(src="http://code.jquery.com/jquery-1.11.0.min.js")
+body
+    script(type='text/javascript' src='helper.js')
     header
-      h1 Welcome
+      h1 My Site
     .container
       .main-content
         block content
+     .sidebar
+        block sidebar
     footer
       p Check out my GitHub https://github.com/frankcash
