@@ -1,0 +1,6 @@
+node_modules
+reveal_presentation/css/
+reveal_presentation/js/
+reveal_presentation/lib/
+reveal_presentation/plugin/
+*.swp
