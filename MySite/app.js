@@ -4,25 +4,24 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
-
 var express = require('express')
   , stylus = require('stylus')
     , nib = require('nib')
 
 
-    var app = express()
+var app = express() // sets up the server
 
   function compile(str, path) {
     return stylus(str)
       .set('filename', path)
       .use(nib());
-  }
+}
 
-var metadataArray = [ ];
 
 function callbackForJSON(callback){
   request('https://news.ycombinator.com', function(error, response, html){
   		if(!error && response.statusCode == 200){
+        var metadataArray = [ ];
   			var $ = cheerio.load(html);
   			$('span.comhead').each(function(i, element){
   			var a=$(this).prev(); //selects previous data
@@ -46,19 +45,16 @@ function callbackForJSON(callback){
   			});
         callback(metadataArray);
   		}
-
   });
 }
 
-// in helper.js $.getjson(url)
-app.get('/scrape', function(req,res) {
-  //pass in a callback that takes in a parameter
+app.get('/scrape', function(req,res) { // pushes the info to a sub url
   callbackForJSON(function(data){
     res.send(data)
   });
 })
 
-
+metadataArray = [ ]; // clears the array
 
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jade')
