@@ -13,6 +13,7 @@ Ideas:
 4. Use of a functional language - Probably Clojure or Haskell
 5. Implement a QuadTree or Octree
 6. Design a mobile App for noting daily living expenses, aim it somehow at college students. Potentially add the ability for them to see how many hours they would need to work to become a millionare by a certain age.
+7. URL shortner
 
 GoLang Program Ideas:
 1. Web server
