@@ -11,7 +11,7 @@ var express = require('express')
 
 var app = express() // sets up the server
 
-  function compile(str, path) {
+function compile(str, path) {
     return stylus(str)
       .set('filename', path)
       .use(nib());
@@ -41,7 +41,7 @@ function callbackForJSON(callback){
   				username: username,
   				comments: parseInt(comments)
   			};
-  			metadataArray.push(metadata);
+  			metadataArray.push(metadata); // pushes the object
   			});
         callback(metadataArray);
   		}
@@ -49,16 +49,19 @@ function callbackForJSON(callback){
 }
 
 app.get('/scrape', function(req,res) { // pushes the info to a sub url
-  callbackForJSON(function(data){
+  callbackForJSON(function(data){ // call back to the function
     res.send(data)
   });
 })
 
 metadataArray = [ ]; // clears the array
 
-app.set('views', __dirname + '/views')
-app.set('view engine', 'jade')
+app.set('views', __dirname + '/views') // sets dir
+
+app.set('view engine', 'jade') // tells express to use jade
+
 app.use(express.logger('dev'))
+
 app.use(stylus.middleware(
 			  { src: __dirname + '/public'
 				  , compile: compile
@@ -66,10 +69,10 @@ app.use(stylus.middleware(
 			))
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', function (req, res) {
+app.get('/', function (req, res) { //get index and renders it
   res.render('index',
 		  { title : 'Home' }
 			  )
 })
 
-app.listen(3000)
+app.listen(3000) // localhost:3000
