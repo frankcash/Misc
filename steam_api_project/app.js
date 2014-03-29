@@ -1,6 +1,12 @@
 var Steam = require('steam-webapi');
+var request = require('request');
+var cheerio = require('cheerio');
+var express = require('express');
 
-var steamAPIKey = "84E02F1B45E5C2655871C427A03D9883";
+
+var steamAPIKey = "key here";
+
+var app = express(); // creates server
 
 Steam.ready(steamAPIKey, function(err) {
     if (err) return console.log(err);
@@ -24,3 +30,10 @@ Steam.ready(steamAPIKey, function(err) {
     });
 
 });
+
+app.get('/', function(req, res){
+  res.send(JSON.stringify(metadataArray, null, 4)); // sends this to the server
+});
+
+
+app.listen(8080); // listens to port 8080
