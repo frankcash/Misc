@@ -4,3 +4,7 @@ reveal_presentation/js/
 reveal_presentation/lib/
 reveal_presentation/plugin/
 *.swp
+steam_api_project/css/
+steam_api_project/js/
+steam_api_projects/lib/
+steam_api_projects/plugin/
