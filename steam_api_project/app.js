@@ -3,8 +3,8 @@ var request = require('request');
 var cheerio = require('cheerio');
 var express = require('express');
 
-
-var steamAPIKey = "key here";
+var metadataArray = [ ];
+var steamAPIKey = "<key>";
 
 var app = express(); // creates server
 
@@ -14,16 +14,17 @@ Steam.ready(steamAPIKey, function(err) {
     var steam = new Steam({key: steamAPIKey});
 
     // Retrieve the steam ID from a steam username/communityID
-    steam.resolveVanityURL({vanityurl:'jonbo'}, function(err, data) {
+    steam.resolveVanityURL({vanityurl:'howdoiskill'}, function(err, data) {
         console.log(data);
         // data -> { steamid: '76561197968620915', success: 1 }
 
-        // Get the Player's TF2 Backpack items
-        data.gameid = Steam.TF2;
+        // sets the game ID
+        data.gameid = Steam.DOTA2;
 
-        // getPlayerItems requires { gameid, steamid }
-        steam.getPlayerItems(data, function (err, data) {
+        // gets heroes
+        steam.getHeroes(data, function (err, data) {
             console.log(data);
+            metadataArray.push(data);
             // data -> { status: 1, num_backpack_slots: 1100, items: [...], ...}
 
         });
