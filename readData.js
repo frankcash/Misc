@@ -1,5 +1,6 @@
 var fs = require('fs');
 
+
 function get_line(filename, line_no, callback) {
     fs.readFile(filename, function (err, data) {
 		      if (err) throw err;
@@ -10,8 +11,8 @@ function get_line(filename, line_no, callback) {
 		      callback(null, lines[+line_no]); // call back
 		    });
 }
-
-get_line('sampleNumbers.txt', 1, function(err, line){ // calls the function on the defined file
+// need to nest this function in a for loop to get all the numbers
+get_line('sampleNumbers.txt', 2, function(err, line){ // calls the function on the defined file
   console.log('The line: ' + line);
 })
 
