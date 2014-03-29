@@ -15,6 +15,7 @@ Ideas:
 6. Design a mobile App for noting daily living expenses, aim it somehow at college students. Potentially add the ability for them to see how many hours they would need to work to become a millionare by a certain age.
 7. URL shortner
 8. Linked list in C
+9. Something to do with Dota2
 
 GoLang Program Ideas:
 1. Web server
