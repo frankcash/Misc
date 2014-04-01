@@ -7,7 +7,7 @@ var Steam = require('steam-webapi');
 var express = require('express');
 
 // sets your key to var
-var steamAPIKey = "84E02F1B45E5C2655871C427A03D9883";
+var steamAPIKey = "<key>";
 
 var app = express(); // creates server
 var metadataArray = []; // initializes the array
