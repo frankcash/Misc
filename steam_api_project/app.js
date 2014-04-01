@@ -36,12 +36,17 @@ Steam.ready(steamAPIKey, function(err) {
         }); // end of steam.getHeroes
 
         app.get('/', function(req, res){
-          res.send(JSON.stringify(metadataArray, null, 4)); // sends this to the server
+          res.send(JSON.stringify(data, null, 4)); // sends this to the server
         }); // end of app.get
 
     }); // end of steam.resolveVanity URL
 
+
+
 }); // end of steam.ready
+
+
+
 
 
 
