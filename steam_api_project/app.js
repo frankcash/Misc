@@ -1,6 +1,6 @@
 // this will pull data using the STEAM API and display it as JSON on a web server
-// using the callback info if a new hero is added since the last time the server is
-// refreshed it will update with a simple page refresh
+//WEB API can only handle 100,000 calls
+
 
 // sets up the modules
 var Steam = require('steam-webapi');
@@ -25,6 +25,9 @@ function getInfo(callback){
           // sets the game ID to Dota2
           data.gameid = Steam.DOTA2;
 
+          //could cache it
+          //could have a timer to hit the page again and cache it again
+
           // gets heroes from Dota2
           steam.getHeroes(data, function (err, data) {
               console.log(data);  // {heroes: [ {name: 'npc_dota_hero_antimage', id:1} ... ]}
@@ -46,4 +49,4 @@ app.get('/', function(req, res){
 });
 
 
-app.listen(8080); // listens to port 8080
+app.listen(8000); // listens to port 8000
