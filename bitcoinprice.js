@@ -12,7 +12,7 @@ request('http://bitcoincharts.com/', function(error, response, page){
   if(!error && response.statusCode == 200){
     var $ = cheerio.load(page); // puts the html in the parser
     $('td.right').each(function(i, elements){
-      var a=$(this).prev();
+      var a=$(this);
       var price = a.text();
       metadataArray.push(price);
     });
