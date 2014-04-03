@@ -4,17 +4,19 @@ var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
 
-var app = express();
-
-var metadataArray = [ ];
+var app = express(); // starts server
 
 request('http://bitcoincharts.com/', function(error, response, page){
+  var metadataArray = [ ]; // array
   if(!error && response.statusCode == 200){
     var $ = cheerio.load(page); // puts the html in the parser
-    $('td.right').each(function(i, elements){
+    $('td.right').each(function(i, elements){ // sets the starting element
       var a=$(this);
       var price = a.text();
       metadataArray.push(price);
+      app.get('/', function(req, res){
+        res.send(JSON.stringify(metadataArray, null, 4)); // sends to server
+      });
     });
 
   } // end of if statement
@@ -22,8 +24,6 @@ request('http://bitcoincharts.com/', function(error, response, page){
 
 
 
-app.get('/', function(req, res){
-  res.send(metadataArray);
-});
+
 
 app.listen(3000);
