@@ -26,8 +26,5 @@ request('http://bitcoincharts.com/', function(error, response, page){
   } // end of if statement
 }); // end of function
 
-app.get('/', function(req, res){
-  res.send(metadataArray);
-});
 
 app.listen(3000);
