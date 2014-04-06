@@ -1,5 +1,8 @@
 // scrapes info from http://bitcoincharts.com/
 // need to find a way to "responsibly" update prices without restarting server
+// doge coin:  http://dogepay.com
+// litecoin: www.ltc-charts.com
+// need to find standarized prices of dogecoin, litcoin, etc
 
 var express = require('express');
 var request = require('request');
@@ -23,8 +26,8 @@ request('http://bitcoincharts.com/', function(error, response, page){
   } // end of if statement
 }); // end of function
 
-
-
-
+app.get('/', function(req, res){
+  res.send(metadataArray);
+});
 
 app.listen(3000);

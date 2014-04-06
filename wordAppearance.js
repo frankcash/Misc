@@ -3,11 +3,11 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
-var runningTotal = 0;
-var count = "";
 
 // change the url to one that you want to use
 request('https://news.ycombinator.com/item?id=7449728', function(error, response, html){
+		var count = "";
+		var runningTotal = 0;
 		if(!error && response.statusCode == 200){
 			var $ = cheerio.load(html); // parses the whole page
 			// change the selector to needed selector
