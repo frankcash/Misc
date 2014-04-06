@@ -1,4 +1,5 @@
 // scrapes info from http://bitcoincharts.com/
+// need to find a way to "responsibly" update prices without restarting server
 
 var express = require('express');
 var request = require('request');

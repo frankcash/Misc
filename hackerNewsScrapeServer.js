@@ -40,11 +40,11 @@ request('https://news.ycombinator.com', function(error, response, page){
 			metadataArray.push(metadata); // pushes metadata into an array
 
 			});
-		
+
 			}
 });
 
-app.get('/', function(req, res){ 
+app.get('/', function(req, res){
   res.send(JSON.stringify(metadataArray, null, 4)); // sends this to the server
 });
 
