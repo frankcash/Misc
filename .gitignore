@@ -8,3 +8,5 @@ steam_api_project/css/
 steam_api_project/js/
 steam_api_projects/lib/
 steam_api_projects/plugin/
+C/mpc.h
+C/mpc.c
