@@ -20,7 +20,7 @@ function compile(str, path) {
 
 function callbackForJSON(callback){
   request('https://news.ycombinator.com', function(error, response, html){
-  		if(!error && response.statusCode == 200){
+  		if(!error && response.statusCode === 200){
         var metadataArray = [ ];
   			var $ = cheerio.load(html);
   			$('span.comhead').each(function(i, element){
