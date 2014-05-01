@@ -5,7 +5,7 @@ I will be attempting to write a NEW program for 50 days and explore as many diff
 
 If I do not write a new program I will at least make ONE meaningful commit.
 
-=======
+========
 Ideas:
 1. Web Scraper - in none Python
 2. Web Scraper - in python, with as little lines as possible that scrapes same info as the non Python one
