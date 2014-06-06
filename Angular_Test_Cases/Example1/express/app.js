@@ -5,7 +5,7 @@ var cors = require('cors');
 var app = express();
 app.use(express.bodyParser());
 app.use(cors());
-app.set('port', 3000);
+
 
 var data = [
 	{"firstName" : "Jeff", "lastName" : "Winger"},
@@ -18,5 +18,11 @@ app.get('/users', function(req, res){
 	res.send(data);
 });
 app.post('/users', function(req, res){
-	res.send(req.body);
+	data.push(req.body);
+	res.send(data);
 });
+
+
+app.listen(3000);
+
+console.log("The server is now running on port 3000.");

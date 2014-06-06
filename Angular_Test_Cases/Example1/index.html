@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Angular Example 1</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+
+<body ng-app="app" ng-controller="AppCtrl as app">
+  <input type="text" ng-model="app.person.firstName"/>
+  <input type="text" ng-model="app.person.lastName"/>
+  <input type="button" ng-click="app.addPerson(app.person)"/>
+
+  <ul>
+    <li ng-repeat="person in app.people">
+      {{person.firstName}} {{person.lastName}}
+    </li>
+  </ul>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
