@@ -11,7 +11,7 @@ var data = [
 	{"firstName" : "Jeff", "lastName" : "Winger"},
 	{"firstName" : "Troy", "lastName" : "Barnes"},
 	{"firstName" : "Britta", "lastName" : "Perry"},
-	{"firstName" : "Abed", "lastName" : "Perry"}
+	{"firstName" : "Abeeed", "lastName" : "Perry"}
 	];
 
 app.get('/users', function(req, res){
