@@ -14,7 +14,6 @@ app.get('/users', function(req, res){
       var info = JSON.parse(body)
       console.log(info) // Print the google web page.
       res.send(info);
-      console.log(info['_total']);
     }
   })
 });
