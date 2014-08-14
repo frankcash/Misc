@@ -41,7 +41,7 @@ def runScan(remoteServerIP):
 if __name__=="__main__":
     parser=OptionParser()
     parser.add_option("-t", "--target", dest="host", type="string",
-                      help="enter host name", metavar="exemple.com")
+                      help="enter host IP", metavar="107.170.175.213")
 
     (options, args)=parser.parse_args()
 
@@ -52,6 +52,7 @@ if __name__=="__main__":
         remoteServerIP = socket.gethostbyname(host)
         try:
             t1 = datetime.now()
+
             # remoteServerIP = socket.gethostbyname(host)
             runScan(remoteServerIP)
 
