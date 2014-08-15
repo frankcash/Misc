@@ -5,11 +5,6 @@ import sys
 from datetime import datetime
 from optparse import OptionParser
 
-# print a nice banner with information on which host we are about to scan
-print "-" * 60
-print "Please wait, scanning remote host"
-print "-" * 60
-
 # Check what time the scan started
 
 
@@ -51,6 +46,10 @@ if __name__=="__main__":
         host = options.host
         remoteServerIP = socket.gethostbyname(host)
         try:
+            print '-' * 60
+            print 'Beginning port scan.'
+            print '-' * 60
+
             t1 = datetime.now()
 
             # remoteServerIP = socket.gethostbyname(host)
