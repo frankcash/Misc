@@ -10,4 +10,5 @@ conanO'Brien = "It's a-me, Conan O'Brien!" -- functions cannot start with a capi
 simpleSetComprehension = [ x * 2 | x <- [1..10]]
 simpleSetComprehension' = [x * 2 | x <- [1..10], x*2>=12] -- adds a predicate that says must be greater than or equal to 12
 mediumSetComprehension = [ x | x <- [50..100], mod x 7 == 3] -- prints all numbers from 50 to 100 that when divided by 7 have a remainder of 3
-boomBang xs = [ if x< 10 then "Boom!" else "Bang!" | x <- xs, odd x]
+boomBang xs = [ if x< 10 then "Boom!" else "Bang!" | x <- xs, odd x] -- replaces odd numbers with "Boom!" or "Bang!" based upon whether they are less than or greater than 10
+fizzBuzz = [fb x | x <- [1..100]] where fb y | y `mod` 15 ==0 = "FizzBuzz" | y `mod` 3 ==0 = "Fizz" | y `mod` 5 == 0 = "Buzz" | otherwise = show y
