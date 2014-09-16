@@ -14,3 +14,29 @@ boomBang xs = [ if x< 10 then "Boom!" else "Bang!" | x <- xs, odd x] -- replaces
 fizzBuzz = [fb x | x <- [1..100]] where fb y | y `mod` 15 ==0 = "FizzBuzz" | y `mod` 3 ==0 = "Fizz" | y `mod` 5 == 0 = "Buzz" | otherwise = show y -- fizzbuzz
 rightTriangles' = [ (a, b, c) | c <- [1..10], a<- [1..c], b <- [1..a], a^2 + b^2 == c^2, a+b+c==24] -- right triangles whose perimeter equals 24
 
+factorial :: Integer -> Integer -- make sure to give explicit type declaration 
+factorial n = product [1..n]
+
+-- :t <thing to get type of> -- tells you the type of something
+
+show 5 -- returns 5 as a member of Show
+read "5" - 2 -- takes a [Char] and returns a member of Read
+
+-- returning using type annotations
+read "5" :: Int
+read "5" :: Float
+(read "5" :: Float ) * 4 
+read "[1,2,3,4]" :: [Int] -- this is as a list of Ints
+read "(3, 'a')" :: (Int, Char)
+
+
+-- Enum members = sequentially ordered types :: use its types in list ranges
+-- contains: (), Bool, Char, Ordering, Int, Integer, Float, and Double
+
+
+20 :: Int
+20 :: Integer
+20 :: Float
+20 :: Double
+
+
