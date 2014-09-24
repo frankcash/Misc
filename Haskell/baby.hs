@@ -16,27 +16,40 @@ rightTriangles' = [ (a, b, c) | c <- [1..10], a<- [1..c], b <- [1..a], a^2 + b^2
 
 factorial :: Integer -> Integer -- make sure to give explicit type declaration 
 factorial n = product [1..n]
-
 -- :t <thing to get type of> -- tells you the type of something
 
-show 5 -- returns 5 as a member of Show
-read "5" - 2 -- takes a [Char] and returns a member of Read
+--show 5 -- returns 5 as a member of Show
+--read "5" - 2 -- takes a [Char] and returns a member of Read
 
 -- returning using type annotations
-read "5" :: Int
-read "5" :: Float
-(read "5" :: Float ) * 4 
-read "[1,2,3,4]" :: [Int] -- this is as a list of Ints
-read "(3, 'a')" :: (Int, Char)
+--read "5" :: Int
+--read "5" :: Float
+--(read "5" :: Float ) * 4 
+--read "[1,2,3,4]" :: [Int] -- this is as a list of Ints
+--read "(3, 'a')" :: (Int, Char)
 
 
 -- Enum members = sequentially ordered types :: use its types in list ranges
 -- contains: (), Bool, Char, Ordering, Int, Integer, Float, and Double
 
 
-20 :: Int
-20 :: Integer
-20 :: Float
-20 :: Double
+--20 :: Int
+--20 :: Integer
+--20 :: Float
+--20 :: Double
 
+lucky :: (Integral a) => a -> String
+lucky 7 = "LUCKY NUMBER SEVEN!"
+lucky x = "Sorry, you're out of luck, pal!"
 
+sayMe :: (Integral a) => a -> String -- cases run in order of existence 
+sayMe 1 = "One!"
+sayMe 2 = "Two!"
+sayMe 3 = "Three!"
+sayMe 4 = "Four!"
+sayMe 5 = "Five!"
+sayMe x = "Not between 1 and 5"
+
+factorialRe :: (Integral a) => a -> a -- type annotation 
+factorialRe 0 = 1 -- when n gets to 0
+factorialRe n = n * factorialRe ( n -1 ) -- finds factorial recursively, i.e. 5 = 5 * 4 * 3 * 2 * 1
