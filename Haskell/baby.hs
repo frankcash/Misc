@@ -52,4 +52,25 @@ sayMe x = "Not between 1 and 5"
 
 factorialRe :: (Integral a) => a -> a -- type annotation 
 factorialRe 0 = 1 -- when n gets to 0
-factorialRe n = n * factorialRe ( n -1 ) -- finds factorial recursively, i.e. 5 = 5 * 4 * 3 * 2 * 1
+factorialRe n = n * factorialRe ( n -1 ) -- finds factorial recursively, i.e. 5 = 5 * 4 * 3 * 2 * 1 but haskell reads it as (5 * (4 * ( 3 * ( 2 * ( 1 * 1) ) ) ) )
+
+
+-- need to make sure to return a catch-all so patterns don't fail
+
+addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)
+addVectors (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+
+-- accounting for three element tuples
+first :: (a, b, c) -> a
+first (x, _, _) = x
+
+second :: (a, b, c) -> b
+second (_, y, _) = y
+
+third :: (a, b, c) -> c
+third (_,_, z) = z
+-- end accounting for three element tuples
+
+head' :: [a] -> a
+head' [] = error "Can't call head on an empty list, dummy!"
+head' (x:_) = x
