@@ -11,6 +11,14 @@ from optparse import OptionParser
 # using the range function to specify ports (this will only go from 1 to 1024)
 
 # also put in some error handling
+def getHost(remoteServerIP):
+    try:
+        ips = socket.gethostbyname(remoteServerIP)
+    except socket.gaierror:
+        ips= False
+    return ips
+
+
 def runScan(remoteServerIP):
     try:
         for port in range(1, 1025):
@@ -36,14 +44,14 @@ def runScan(remoteServerIP):
 if __name__=="__main__":
     parser=OptionParser()
     parser.add_option("-t", "--target", dest="host", type="string",
-                      help="enter host IP", metavar="107.170.175.213")
+                      help="enter host IP or website", metavar="107.170.175.213")
 
     (options, args)=parser.parse_args()
 
     if options.host==None:
         parser.print_help()
     else:
-        host = options.host
+        host =getHost(options.host)
         remoteServerIP = socket.gethostbyname(host)
         try:
             print '-' * 60
@@ -52,7 +60,7 @@ if __name__=="__main__":
 
             t1 = datetime.now()
 
-            # remoteServerIP = socket.gethostbyname(host)
+            remoteServerIP = socket.gethostbyname(host)
             runScan(remoteServerIP)
 
             # get final time
