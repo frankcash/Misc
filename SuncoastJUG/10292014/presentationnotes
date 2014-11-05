@@ -1,0 +1,14 @@
+25 years of OOP w/o it getting easier
+Objects make things complicated because stack trace
+Scala has test check (emerging in clojure)
+"Are We There Yet" by Rich Hickey
+No side effects == good
+Clojure /= about avoiding states, just managing it
+Clojure provies "managed time" in much the same way that GC's have come to provide managed memory
+Code is "provable" because it lacks transient variables
+	- Tests pass in all required state
+	- Example-based (unit) tests are great
+Stepping debuggers are simply not needed because if it gets same input it will give the same output
+In clojure you focus on a small set of heirarchical data structures and the function that process them
+Everything is a function, no second class syntax
+Macros
