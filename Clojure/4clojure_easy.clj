@@ -30,3 +30,17 @@
 (= (* 2 2) 4)
 (= '(6 7 8) (map #(+ % 5) '(1 2 3))) ;; map takes a function and a sequence, then applies that function to every element in the sequence -> returns a new sequence
 (= '(6 7) (filter #(> % 5) '(3 4 5 6 7))) ;; filter function takes two args: predicate function and sequence -> returns a new sequence with all elements that the fn was true force
+;; let
+(= 7 (let [x 5] (+ 2 x)))
+(= 7 ( let [x 3, y 10] (- y x)))
+(= 7 (let [x 21] (let [y 3] (/ x y))))
+(= 10 (let [z 1, x 7, y 3] (+ x y)))
+(= 4 (let [z 1, x 7, y 3] (+ y z)))
+(= 1 (let [z 1, x 7, y 3] z))
+;; reduce
+(= 0(reduce + []))
+(= 15 (reduce + [1 2 3 4 5]))
+(= 6 (reduce + 1 [2 3]))
+;; recursion in clojure
+(= [5, 4, 3, 2, 1] ((fn foo [x] (when (> x 0) (conj (foo (dec x)) x))) 5)) ;; dec returns x - 1 && conj returns an [ ] with the elements added to the send-off
+(= 3 (dec 4))
