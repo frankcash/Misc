@@ -19,10 +19,23 @@
       document.body.appendChild( renderer.domElement); //adds the renderer to the html
 
       var geometry = new THREE.BoxGeometry(1, 1, 1); // contains the vertices and faces of the cube
-      var material = new THREE.MeshBasicMaterial({color: 0x00ff00}); // "colors" the cube with a material
+      var material = new THREE.MeshBasicMaterial({color: 0x99FFFF}); // "colors" the cube with a material
       var cube = new THREE.Mesh( geometry, material); // a mesh takes a geometry and adds a material to it
-
       scene.add( cube ); // adds to the coordinates at (0,0,0)
+
+      // create the ground plane
+      // Width along the X axis, Height along the Y axis, widthSegments,  heightSegments
+      var planeGeometry = new THREE.PlaneGeometry(50, 40, 1, 1);
+      var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
+      var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+      plane.receiveShadow = true;
+      // rotate and position the plane
+      plane.rotation.x = -0.5 * Math.PI;
+      plane.position.x = 0
+      plane.position.y = -2
+      plane.position.z = 0
+      // add the plane to the scene
+      scene.add(plane);
 
       camera.position.z = 3; // moves camera closer/farther the cube
       camera.position.x = 1; // moves camera to left/right the cube
@@ -39,8 +52,10 @@
       **/
       function render(){
         requestAnimationFrame(render);
+        // cube.rotation.x += 0.1;
+        // cube.rotation.y += 0.1;
+        cube.rotation.z += 0.01;
         renderer.render( scene, camera); // render the scene
-
 
       }
       render();
