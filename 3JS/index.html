@@ -9,6 +9,7 @@
   <body>
     <script src="js/three.min.js"></script>
     <script>
+      var renderer;
       var scene = new THREE.Scene(); // sets up scene
       var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000); // creates perspective
       // field of view, aspect ratio, near clipping then far clipping
@@ -20,18 +21,27 @@
       var geometry = new THREE.BoxGeometry(1, 1, 1); // contains the vertices and faces of the cube
       var material = new THREE.MeshBasicMaterial({color: 0x00ff00}); // "colors" the cube with a material
       var cube = new THREE.Mesh( geometry, material); // a mesh takes a geometry and adds a material to it
+
       scene.add( cube ); // adds to the coordinates at (0,0,0)
 
-      camera.position.z = 1; // moves camera closer/farther the cube
+      camera.position.z = 3; // moves camera closer/farther the cube
       camera.position.x = 1; // moves camera to left/right the cube
       camera.position.y = 1; // moves camera up so above/below the cube
+
+      renderer.setClearColor(0x333F47, 1); //set background color of the scene
+      var light = new THREE.PointLight(0xffffff); // create a light
+      light.position.set(-100, 200, 100); // set the position
+      scene.add(light); // add to the scene
+
 
       /**
       *Render loop
       **/
       function render(){
         requestAnimationFrame(render);
-        renderer.render( scene, camera);
+        renderer.render( scene, camera); // render the scene
+
+
       }
       render();
     </script>
