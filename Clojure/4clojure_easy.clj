@@ -38,7 +38,9 @@
 (= 4 (let [z 1, x 7, y 3] (+ y z)))
 (= 1 (let [z 1, x 7, y 3] z))
 ;; reduce
-(= 0(reduce + []))
+(= (reduce + [1 2 3]) 6)
+(= (reduce + (list 0 -2 5 5 ))8)
+(= 0 (reduce + []))
 (= 15 (reduce + [1 2 3 4 5]))
 (= 6 (reduce + 1 [2 3]))
 ;; recursion in clojure

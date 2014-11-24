@@ -8,7 +8,7 @@ main = scotty 3000 $ do
 --		get "/:word" $ do
 --			beam <- param "word"
 --			html $ mconcat ["<h1>Scotty, ", beam, " me up!</h1>"]
-		get "/foo" $ do
-			json("hello world" :: String)  -- sends json
+--		get "/foo" $ do
+--			json("hello world" :: String)  -- sends json
 		notFound $ do -- when nothing found, will match to * not found, so be careful on placement
 			text "there is no such route."
