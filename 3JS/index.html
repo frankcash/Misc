@@ -8,6 +8,7 @@
   </head>
   <body>
     <script src="js/three.min.js"></script>
+    <script src="js/jquery-1.11.1.min.js"></script>
     <script>
       var renderer;
       var scene = new THREE.Scene(); // sets up scene
@@ -18,14 +19,15 @@
       renderer.setSize( window.innerWidth, window.innerHeight); // if resource intensive set to smaller
       document.body.appendChild( renderer.domElement); //adds the renderer to the html
 
-      var geometry = new THREE.BoxGeometry(1, 1, 1); // contains the vertices and faces of the cube
+      var geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5); // contains the vertices and faces of the cube
       var material = new THREE.MeshBasicMaterial({color: 0x99FFFF}); // "colors" the cube with a material
       var cube = new THREE.Mesh( geometry, material); // a mesh takes a geometry and adds a material to it
+      cube.position.x=0.1;
       scene.add( cube ); // adds to the coordinates at (0,0,0)
 
       // create the ground plane
       // Width along the X axis, Height along the Y axis, widthSegments,  heightSegments
-      var planeGeometry = new THREE.PlaneGeometry(50, 40, 1, 1);
+      var planeGeometry = new THREE.PlaneBufferGeometry(50, 40, 1, 1);
       var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
       var plane = new THREE.Mesh(planeGeometry, planeMaterial);
       plane.receiveShadow = true;
@@ -46,6 +48,36 @@
       light.position.set(-100, 200, 100); // set the position
       scene.add(light); // add to the scene
 
+      /**
+      *event listeners to move the cube
+      **/
+      function addListeners(){
+        window.addEventListener("keydown", function(event){
+          if(event.defaultPrevent){
+            return; // should do nothing if the key event was already consumed
+          }
+          switch(event.key){
+            case "Down":
+              break;
+            case "Up":
+              break;
+            case "Left":
+              // move -x
+              cube.translateX(-0.001, 0);
+              break;
+            case "Right":
+              // move +x
+              cube.translateX(+0.001, 0);
+              break;
+            default:
+              return; // Quit when this doesn't handle the key event
+
+          }
+
+          event.preventDefault();
+
+        }, true);
+      }
 
       /**
       *Render loop
@@ -54,11 +86,18 @@
         requestAnimationFrame(render);
         // cube.rotation.x += 0.1;
         // cube.rotation.y += 0.1;
-        cube.rotation.z += 0.01;
+        // cube.rotation.z += 0.01;
         renderer.render( scene, camera); // render the scene
 
+        addListeners();
+
       }
+
+
+
+      // detectLeftButton(evt);
       render();
     </script>
+
   </body>
 </html>
