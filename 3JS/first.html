@@ -58,8 +58,10 @@
           }
           switch(event.key){
             case "Down":
+              cube.translateZ(0.001, 0)
               break;
             case "Up":
+              cube.translateZ(-0.001, 0)
               break;
             case "Left":
               // move -x
