@@ -1,5 +1,6 @@
 #Elixir
 wont run out of stack levels unless you run out of memory
+works with OTP
 ##Elixir
 elixir built on erlang vm
 compiles to BEAM bytecode
@@ -206,6 +207,9 @@ Processes encapsulate state
 Elixir's processes are more object-oriented than objects in object-oriented languages
 
 ######Processes Example
+Messages are stored in the mailbox
+All messages are async, if it receives messages during work it gets next message
+Can put limitations on the mailbox
 ```
 #Message being sent to a process
 #pid is a process
@@ -221,5 +225,5 @@ receive do
     x -y
   _->
     :error
-end
+end # would call this again to implement a server
 ```
