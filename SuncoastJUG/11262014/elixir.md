@@ -1,3 +1,4 @@
+#Elixir
 ##Elixir
 elixir built on erlang vm
 compiles to BEAM bytecode
@@ -101,4 +102,55 @@ second #=> 2
 
 [first, second |rest] = [1, 2, 3]
 second #=> 2
+```
+
+###functions
+```
+def fib(0) do 0 end
+def fib(1) do 1 end
+def fib(n) do fib(n-1) + fib(n-2) end
+```
+
+##Variables
+variables cannot be re-bound to new values during a match
+
+```
+{num, num} = {1, 1}
+{num, num} = {1, 2} #=> ** No match of right hand value
+```
+
+###underscore variable can be used in place of a normal variable in a pattern
+
+```
+{_, _} = {1, 1}
+{_, _} = {1, 2}
+{num, num} = {1, 2}
+```
+
+###the ^ Variable prefix
+```
+username = "Jose"
+
+{:name, ^username} = {:name, "Joe"} #forces it to retain Jose and not be re-assigned, throws error
+{:name, ^username} {:name, "Jose"}
+```
+
+##First Class Functions
+Two Types
+ - Names -- does not inherit scope
+ - Anonymous -- inherits the scope of wherever it was defined functions
+Both can be referenced and passed around
+
+####Named
+```
+defmodule Hello
+  def greet("SunJug") do "hello everyone!" end
+  def greet(name) do "hello " <> name end
+end
+
+#references the function
+hello = &hello.greet/1 #=> #function<6.90072147/1 in :erl_eval.expr/5>
+
+hello.("SunJUG") #=> hello everyone!
+Hello.greet("Jose") #=> hello Jose
 ```
