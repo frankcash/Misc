@@ -16,3 +16,4 @@ a.out
 3JS/js/three.min.js
 cabal.sandbox.config
 .cabal.sandbox
+jquery-1.11.1.min.js
