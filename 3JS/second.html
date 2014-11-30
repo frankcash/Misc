@@ -64,12 +64,10 @@
               camera.translateZ(-0.001, 0)
               break;
             case "Left":
-              // move -x
-              camera.translateX(-0.001, 0);
+              camera.rotateY(0.002);
               break;
             case "Right":
-              // move +x
-              camera.translateX(+0.001, 0);
+              camera.rotateY(-0.002);
               break;
             default:
               return; // Quit when this doesn't handle the key event
