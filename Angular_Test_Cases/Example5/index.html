@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Angular Example 4</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.0/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body ng-app="docsRestrictDirective">
+
+  <div ng-controller="Controller" >
+    <div ng-repeat="customer in customers">
+      {{customer.name}}
+      <my-customer info={{customer.name}}></my-customer>
+    </div>
+
+    <!-- <my-customer info="naomi"></my-customer>
+    <hr>
+    <my-customer info="igor"></my-customer> -->
+  </div>
+
+</body>
+</html>
