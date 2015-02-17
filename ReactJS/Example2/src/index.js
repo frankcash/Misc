@@ -12,6 +12,20 @@ var CommentBox = React.createClass({
       }.bind(this)
     });
   },
+  handleCommentSubmit: function(comment){
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: comment,
+      success: function(data){
+        this.setState({data: data}); // replaces old array of data from original get
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   getInitialState: function(){ // executes once per life cycle, sets beginning state
     return {data:[]};
   },
@@ -20,13 +34,12 @@ var CommentBox = React.createClass({
     setInterval(this.loadCommentsFromServer(), this.props.pollInterval);
   },
   render: function(){
-
-
+    // Passes callback from parent => child
     return(
       <div className="commentBox">
       <h3>Comments</h3>
       <CommentList data={this.state.data} />
-      <CommentForm />
+      <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
     );
   }
@@ -63,12 +76,25 @@ var Comment = React.createClass({
 });
 
 var CommentForm = React.createClass({
-  render: function(){
-    return(
-      <div className="commentForm">
-      Hello, world! I am a commentForm.
-      </div>
-    )
+  handleSubmit: function(e){
+    e.preventDefault(); // prevents DOM and allows react's virtual DOM to handle this
+    var author = this.refs.author.getDOMNode().value.trim();
+    var text = this.refs.text.getDOMNode().value.trim();
+    if(!text || !author){
+      return;
+    }
+    this.props.onCommentSubmit({author: author, text: text});
+    this.refs.author.getDOMNode().value = '';
+    this.refs.text.getDOMNode().value = '';
+  },
+  render: function() {
+    return (
+      <form className="commentForm" onSubmit={this.handleSubmit}>
+      <input type="text" placeholder="Your name" ref="author" />
+      <input type="text" placeholder="Say something..." ref="text" />
+      <input type="submit" value="Post" />
+      </form>
+    );
   }
 });
 
