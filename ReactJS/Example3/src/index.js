@@ -105,22 +105,19 @@ var CountryDropdown = React.createClass({
 
   render: function(){
     var options;
+    var setState;
     if(this.state.showOptions){
       console.log("state of showOptions: ", this.state.showOptions);
-      return(
-        <div className="dropdown" onClick={this.handleClick}>
-          <label>State is true</label>
-        </div>
-      )
-      // options=<countryoptions></countryoptions>;
+      setState = "true";
     }else{
       console.log("state of showOptions: ", this.state.showOptions);
-      return(
-        <div className="dropdown" onClick={this.handleClick}>
-        <label>State is false</label>
-        </div>
-      )
+      setState = "!true";
     }
+    return(
+      <div className="dropdown" onClick={this.handleClick}>
+        <label>State is {setState}</label>
+      </div>
+    )
 
   },
 
