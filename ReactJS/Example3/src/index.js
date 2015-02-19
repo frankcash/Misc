@@ -92,3 +92,44 @@ React.render(
   <CommentBox url="comments.json" pollInterval={2000} />,
   document.getElementById('content')
 );
+
+/**
+*
+*/
+var CountryDropdown = React.createClass({
+  getInitialState: function(){
+    return{
+      showOptions:false
+    };
+  },
+
+  render: function(){
+    var options;
+    if(this.state.showOptions){
+      console.log("state of showOptions: ", this.state.showOptions);
+      return(
+        <div className="dropdown" onClick={this.handleClick}>
+          <label>State is true</label>
+        </div>
+      )
+      // options=<countryoptions></countryoptions>;
+    }else{
+      console.log("state of showOptions: ", this.state.showOptions);
+      return(
+        <div className="dropdown" onClick={this.handleClick}>
+        <label>State is false</label>
+        </div>
+      )
+    }
+
+  },
+
+  handleClick: function(e){
+    this.setState({showOptions: !this.state.showOptions})
+  }
+})
+
+React.render(
+  <CountryDropdown/>,
+  document.getElementById('dropdown')
+);
