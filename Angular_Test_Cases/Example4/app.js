@@ -21,9 +21,7 @@ angular.module('docsRestrictDirective', [])
   .directive('myCustomer', function(){
     return{
       restrict: 'E',
-      scope: { // scope options contains propery for each isolate scope binding
-        customerInfo: '=info'
-      },
+
       templateUrl: 'my-customer.html'
     };
   });
