@@ -1,0 +1,14 @@
+{
+  "name": "blink-lights",
+  "version": "0.0.1",
+  "description": "Simple Tessel Code to Blink Lights of a Tessel",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "tessel"
+  ],
+  "author": "Frank Cash",
+  "license": "GPL3"
+}
