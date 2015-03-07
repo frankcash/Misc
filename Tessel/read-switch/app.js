@@ -8,8 +8,8 @@ gpio.analog.forEach(function (pin, i) {
   console.log('Value of analog pin', i, '=', pin.read() * pin.resolution, '/', pin.resolution);
 });
 
-// COMMON = 18 ; G5 ; BLUE
-// NORMALLY CLOSED = 19 ; G3 ; GREEN
+// COMMON = 18 ; G5 ; BLUE ; grounded
+// NORMALLY CLOSED = 19 ; G3 ; GREEN ; not using
 // NORMALLY OPEN = 20 ; G4 ; RED
 
 
@@ -27,10 +27,12 @@ function foo(){
 
   console.log('Reading pin:', myPin.rawRead());
 
-  foo();
+  // foo();
 }
+for(;;){
+  setTimeout( foo() , 30000);
 
-setTimeout( foo() , 3000);
+}
 
 
 
