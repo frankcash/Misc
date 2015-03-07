@@ -1,0 +1,11 @@
+{
+  "name": "jest-tutorial",
+  "version": "0.0.1",
+  "description": "Code from the Jest tutorial.",
+  "devDependencies": {
+    "jest-cli": "~0.4.0"
+  },
+  "scripts" : {
+    "test" : "jest"
+  }
+}
