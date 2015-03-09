@@ -1,0 +1,11 @@
+{
+  "name": "wifi-example",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Frank Cash",
+  "license": "MIT"
+}
