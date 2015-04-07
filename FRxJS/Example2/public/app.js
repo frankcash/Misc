@@ -55,10 +55,21 @@ $(function(){
   //Streams / properties
   usernameEntered = username.map(nonEmpty);
   fullnameEntered = fullname.map(nonEmpty);
-  buttonEnabled = usernameEntered.and(fullnameEntered);
+
+  availabilityRequest = username.changes().map(function(user) {
+    var restUrl = ({ url: "/usernameavailable/" + user });
+    return restUrl;
+  });
+
+  availabilityResponse = availabilityRequest.ajax();
+  usernameAvailable = availabilityResponse.toProperty(true);
+  buttonEnabled = usernameEntered.and(fullnameEntered).and(usernameAvailable);
+
 
   //side effects
+  usernameAvailable.not().onValue(setVisibility, unavailabilityLabel);
   buttonEnabled.assign(setEnabled, registerButton);
+
 
 
 });
