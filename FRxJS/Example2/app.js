@@ -23,6 +23,12 @@ app.get('/', function(req,res){
 });
 
 
+app.get('/usernameavailable/:user', function(req,res){
+  var user  = req.params.user;
+  var available = user.length % 2 === 0;
+  res.send(available);
+});
+
 
 app.listen(3000);
 
