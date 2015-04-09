@@ -18,10 +18,28 @@ app.use(function (req, res, next) {
   next();
 });
 
+var users = ["admin", "guest"];
+
 app.get('/', function(req,res){
   res.render('index',{ });
 });
 
+
+app.get('/usernameavailable/:user', function(req,res){
+  var user  = req.params.user;
+  var available = true;
+  users.forEach(function(u){
+    if(u===user){
+      available=false;
+    }
+  });
+  res.send(available);
+});
+
+
+app.post('/createuser', function(req, res){
+
+});
 
 
 app.listen(3000);
