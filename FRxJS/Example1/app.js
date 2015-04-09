@@ -1,8 +1,5 @@
 var express = require('express');
 var cons = require('consolidate');
-var bodyParser = require('body-parser');
-var fs = require('fs');
-var path = require('path');
 var app = express();
 
 app.set('view engine', 'html');
