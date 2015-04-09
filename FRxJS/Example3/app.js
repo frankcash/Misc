@@ -25,22 +25,35 @@ app.get('/', function(req,res){
 });
 
 
-app.get('/usernameavailable/:user', function(req,res){
-  var user  = req.params.user;
-  var available = true;
-  users.forEach(function(u){
-    if(u===user){
-      available=false;
+// app.get('/usernameavailable/:user', function(req,res){
+//   var user  = req.params.user;
+//   var available = true;
+//   users.forEach(function(u){
+//     if(u===user){
+//       available=false;
+//     }
+//   });
+//   res.send(available);
+// });
+//
+//
+// app.post('/createuser', function(req, res){
+//
+// });
+
+
+app.get('/comments', function(req,res){
+  var myRes = [
+    {
+      "author": "Pete Hunt",
+      "text": "Hey there!",
+      "id" : 43
     }
-  });
-  res.send(available);
+  ];
+
+
+  res.send(myRes);
 });
-
-
-app.post('/createuser', function(req, res){
-
-});
-
 
 app.listen(3000);
 
