@@ -1,0 +1,15 @@
+{
+  "name": "read-switch",
+  "version": "1.0.0",
+  "description": "Reads magnetic switch using a Tessel",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "magnetic",
+    "switch"
+  ],
+  "author": "Frank Cash",
+  "license": "GPL-3"
+}

@@ -1,0 +1,16 @@
+{
+  "curly" : true,
+  "node": true,
+  "mocha": true,
+  "jquery": true,
+  "undef": true,
+  "unused": true,
+  "notypeof": true,
+  "freeze": true,
+  "maxparams": 5,
+  "esnext": "true",
+  "globals" : {
+
+  }
+
+}
