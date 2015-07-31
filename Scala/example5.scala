@@ -5,7 +5,7 @@ import java.sql.{Connection, DriverManager, ResultSet};
 /**
 * Gets user ids from user field in mysql
 */
-object Example3 {
+object Example5 {
 
   val conn_str = "jdbc:mysql://localhost:8889/foobar?user=root&password=root"
 
