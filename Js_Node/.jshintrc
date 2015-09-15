@@ -1,0 +1,15 @@
+{
+  "esnext": true,
+  "curly" : true,
+  "node": true,
+  "mocha": true,
+  "undef": true,
+  "unused": true,
+  "notypeof": true,
+  "freeze": true,
+  "maxparams": 5,
+  "globals" : {
+    "angular" : true
+  }
+
+}
