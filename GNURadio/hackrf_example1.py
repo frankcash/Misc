@@ -3,7 +3,7 @@
 # GNU Radio Python Flow Graph
 # Title: HackRF_Example1
 # Author: Frank Cash
-# Generated: Sat Sep 26 14:25:22 2015
+# Generated: Thu Oct  8 18:57:50 2015
 ##################################################
 
 if __name__ == '__main__':
@@ -28,6 +28,7 @@ from gnuradio.fft import window
 from gnuradio.filter import firdes
 from gnuradio.wxgui import fftsink2
 from gnuradio.wxgui import forms
+from gnuradio.wxgui import waterfallsink2
 from grc_gnuradio import wxgui as grc_wxgui
 from optparse import OptionParser
 import osmosdr
@@ -74,6 +75,20 @@ class hackrf_example1(grc_wxgui.top_block_gui):
         	proportion=1,
         )
         self.Add(_center_freq_sizer)
+        self.wxgui_waterfallsink2_0 = waterfallsink2.waterfall_sink_c(
+        	self.GetWin(),
+        	baseband_freq=0,
+        	dynamic_range=100,
+        	ref_level=0,
+        	ref_scale=2.0,
+        	sample_rate=samp_rate,
+        	fft_size=512,
+        	fft_rate=15,
+        	average=False,
+        	avg_alpha=None,
+        	title="Waterfall Plot",
+        )
+        self.Add(self.wxgui_waterfallsink2_0.win)
         self.wxgui_fftsink2_0 = fftsink2.fft_sink_c(
         	self.GetWin(),
         	baseband_freq=center_freq,
@@ -128,6 +143,7 @@ class hackrf_example1(grc_wxgui.top_block_gui):
         self.connect((self.low_pass_filter_0, 0), (self.rational_resampler_xxx_0, 0))    
         self.connect((self.osmosdr_source_0, 0), (self.blocks_multiply_xx_0, 0))    
         self.connect((self.osmosdr_source_0, 0), (self.wxgui_fftsink2_0, 0))    
+        self.connect((self.osmosdr_source_0, 0), (self.wxgui_waterfallsink2_0, 0))    
         self.connect((self.rational_resampler_xxx_0, 0), (self.analog_wfm_rcv_0, 0))    
 
 
@@ -152,6 +168,7 @@ class hackrf_example1(grc_wxgui.top_block_gui):
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 75e3, 25e3, firdes.WIN_HAMMING, 6.76))
         self.osmosdr_source_0.set_sample_rate(self.samp_rate)
         self.wxgui_fftsink2_0.set_sample_rate(self.samp_rate)
+        self.wxgui_waterfallsink2_0.set_sample_rate(self.samp_rate)
 
     def get_channel_width(self):
         return self.channel_width
