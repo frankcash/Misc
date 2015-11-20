@@ -1,7 +1,8 @@
-// prints the users input 
-var result = 0
+// prints the users input
+var result = "";
 
-for (var i = 2; i < process.argv.length; i++)
-	  result += Number(process.argv[i])
+for (var i = 2; i < process.argv.length; i++){
+	result += process.argv[i];
+}
 
-		console.log(result)
+console.log(result);
